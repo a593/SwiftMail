@@ -18,56 +18,59 @@ import FindInPageIcon from '@mui/icons-material/FindInPage';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import VideocamIcon from '@mui/icons-material/Videocam';
 import KeyboardIcon from '@mui/icons-material/Keyboard';
+import { useDispatch } from "react-redux";
+import { openSendMessage} from "./features/mailSlice";
 function Sidebar() {
+
+    const dispatch =useDispatch();
     return (
         <div className="sidebar">
-            {/* <Button startIcon={<AddIcon/>} 
-            className="compose_btn">Compose</Button> */}
+           
 
-             <Button startIcon={<AddCircleIcon/>} 
-            className="compose_btn">Compose</Button>
+            <Button startIcon={<AddCircleIcon />}
+                className="compose_btn" onClick={()=>dispatch(openSendMessage())}>Compose</Button>
 
-            <Sidebaroptions Icon={MoveToInboxIcon} title="Inbox"  
-            number="224" isactive={true}/>
+            <Sidebaroptions Icon={MoveToInboxIcon} title="Inbox"
+                number="224" isactive={true} />
 
-<Sidebaroptions Icon={StarRateIcon} title={"Starred"}  
-            number={500}/>
+            <Sidebaroptions Icon={StarRateIcon} title={"Starred"}
+                number={500} />
 
- <Sidebaroptions Icon={WatchLaterIcon} title={"Snoozed"}  
-            number={300}/>
+            <Sidebaroptions Icon={WatchLaterIcon} title={"Snoozed"}
+                number={300} />
 
-<Sidebaroptions Icon={LabelImportantIcon} title={"Important"}  
-            number={452}/>
+            <Sidebaroptions Icon={LabelImportantIcon} title={"Important"}
+                number={452} />
 
- <Sidebaroptions Icon={SendIcon} title={"Sent"}  
-            number={254}/>
+            <Sidebaroptions Icon={SendIcon} title={"Sent"}
+                number={254} />
 
- <Sidebaroptions Icon={DraftsIcon} title={"Drafts"}
-            number={254}/>
+            <Sidebaroptions Icon={DraftsIcon} title={"Drafts"}
+                number={254} />
 
- <Sidebaroptions Icon={LabelIcon} title={"Category"} 
-            number={254}/>     
+            <Sidebaroptions Icon={LabelIcon} title={"Category"}
+                number={254} />
 
-<Sidebaroptions Icon={DeleteIcon} title={"Trash"}  
-            number={254}/>    
+            <Sidebaroptions Icon={DeleteIcon} title={"Trash"}
+                number={254} />
 
-<Sidebaroptions Icon={FindInPageIcon} title={"Documents"}  
-            number={254}/>
+            <Sidebaroptions Icon={FindInPageIcon} title={"Documents"}
+                number={254} />
 
-<Sidebaroptions Icon={ExpandMoreIcon} title={"More"} 
-            number={254}/>   
+            <Sidebaroptions Icon={ExpandMoreIcon} title={"More"}
+                number={254} />
 
-<hr/>
+            <hr />
             <h3 className="sidebaroptions_heading">
 
                 Meet
             </h3>
 
-            <Sidebaroptions Icon={VideocamIcon} title={"New meeting"} 
+            <Sidebaroptions Icon={VideocamIcon} title={"New meeting"}
             />
 
-           <Sidebaroptions Icon={KeyboardIcon} title={"Join a meeting"} 
-           />
+            <Sidebaroptions Icon={KeyboardIcon} title={"Join a meeting"}
+            />
 
 
         </div>
