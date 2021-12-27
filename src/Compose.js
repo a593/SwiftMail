@@ -140,4 +140,4 @@ function Compose() {
     )
 }
 
-export default Compose
+export default Compose;

@@ -1,4 +1,4 @@
-import react from "react"
+import React,{useState} from "react"
 import ReorderIcon from '@material-ui/icons/Reorder';
 import { IconButton, Avatar } from "@material-ui/core";
 import SearchIcon from '@material-ui/icons/Search';
@@ -10,23 +10,28 @@ import AppsIcon from '@mui/icons-material/Apps';
 import "./css/header.css"
 import { useSelector } from 'react-redux';
 import { selectedUser } from "./features/userSlice";
-// import { auth, signOut } from "./firebase";
-// import { FirebaseError } from "firebase/app";
-// import { auth } from "./firebase";
-// import { signOut } from "firebase/auth";
+import {auth,signOut} from "./firebase"
+import { Redirect } from "react-router-dom";
 
-
-// const handleSignout =() => {
-
-//     alert('clicked')
-
-//     signOut(auth).then((res) => alert("successfully Logged out")).catch((err) => alert("error couldn't logout"))
-// }
 
 
 const Header = () => {
 
-    const user = useSelector(selectedUser)
+    const [redirect,setRedirect]=useState("");
+
+    const photoURL = useSelector((state) => state.user.photoURL);
+    const user = useSelector(selectedUser);
+
+    if(redirect){
+        return <Redirect to={redirect}/>
+    }
+
+
+    const handleSignout=()=>{
+
+     signOut(auth).then(()=>setRedirect("/")).catch((err)=>alert("couldn't logout error try again!"))
+
+    }
     return (
         <div className="header">
             <div className="header_left">
@@ -59,11 +64,12 @@ const Header = () => {
                     <AppsIcon></AppsIcon>
                 </IconButton>
 
-                <Avatar src={user?.photoURL}></Avatar>
+                {/* <div onClick={handleSignout}><Avatar src={photoURL}></Avatar></div> */}
 
-                {/* <div onClick={handleSignout}>
+
+                <div onClick={handleSignout}>
                     <Avatar src={user?.photoURL}></Avatar>
-                </div> */}
+                </div>
 
             </div>
         </div>
